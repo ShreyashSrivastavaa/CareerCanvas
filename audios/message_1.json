@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "soundFile": "/Users/vikram/Desktop/hackbyte-ai-mentor/audios/message_1.wav",
+    "soundFile": "/Users/vikram/Desktop/careercanvas/audios/message_1.wav",
     "duration": 6.60
   },
   "mouthCues": [
@@ -51,3 +51,4 @@
     { "start": 6.36, "end": 6.60, "value": "X" }
   ]
 }
+

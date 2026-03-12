@@ -724,7 +724,7 @@ vector<int> twoSum(vector<int>& nums, int target) {
       {/* Enhanced header with gradient border and glass effect */}
       <header className="border-b border-zinc-800/50 bg-zinc-900/50 backdrop-blur-sm h-14 flex items-center px-6 sticky top-0 z-50">
         <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
-          IntervueX
+          CareerCanvas
         </h1>
         {/* ... rest of header content ... */}
       </header>
@@ -1049,3 +1049,4 @@ vector<int> twoSum(vector<int>& nums, int target) {
     </div>
   );
 }
+

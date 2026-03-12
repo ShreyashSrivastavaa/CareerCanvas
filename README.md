@@ -12,7 +12,7 @@ Your personal AI mentor for technical interviews and system design
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0.0-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4.0-38B2AC)](https://tailwindcss.com/)
 
-[Demo](https://intervuex.vercel.app) · [Report Bug](issues) · [Request Feature](issues)
+[Demo](https://careercanvas.vercel.app) · [Report Bug](issues) · [Request Feature](issues)
 
 ## 🎯 Overview
 
@@ -137,8 +137,8 @@ CareerCanvas is an AI-powered interview mentor that provides personalized techni
 ### Initial Setup
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/intervuex.git
-   cd intervuex
+   git clone https://github.com/ShreyashSrivastavaa/careercanvas.git
+   cd careercanvas
    ```
 
 2. **Install Dependencies**
@@ -172,12 +172,12 @@ CareerCanvas is an AI-powered interview mentor that provides personalized techni
 ### Manual Docker Commands
 1. **Build the Image**
    ```bash
-   docker build -t intervuex .
+   docker build -t careercanvas .
    ```
 
 2. **Run the Container**
    ```bash
-   docker run -p 3000:3000 -e NODE_ENV=production intervuex
+   docker run -p 3000:3000 -e NODE_ENV=production careercanvas
    ```
 
 ### Environment Variables
@@ -186,7 +186,7 @@ When running with Docker, you can pass environment variables:
 docker run -p 3000:3000 \
   -e MONGODB_URI=your_mongodb_uri \
   -e GOOGLE_API_KEY=your_google_api_key \
-  intervuex
+  careercanvas
 ```
 
 

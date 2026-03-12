@@ -1,6 +1,6 @@
-# Contributing to IntervueX
+# Contributing to CareerCanvas
 
-We love your input! We want to make contributing to IntervueX as easy and transparent as possible, whether it's:
+We love your input! We want to make contributing to CareerCanvas as easy and transparent as possible, whether it's:
 
 - Reporting a bug
 - Discussing the current state of the code
@@ -44,7 +44,7 @@ We use GitHub to host code, to track issues and feature requests, as well as acc
 ## Any Contributions You Make Will Be Under the Apache License 2.0
 When you submit code changes, your submissions are understood to be under the same [Apache License 2.0](LICENSE.md) that covers the project. Feel free to contact the maintainers if that's a concern.
 
-## Report Bugs Using GitHub's [Issue Tracker](https://github.com/yourusername/hackbyte-ai-mentor/issues)
+## Report Bugs Using GitHub's [Issue Tracker](https://github.com/ShreyashSrivastavaa/careercanvas/issues)
 
 ## Write Bug Reports With Detail, Background, and Sample Code
 

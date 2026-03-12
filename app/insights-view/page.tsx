@@ -83,7 +83,7 @@ export default function InsightsView() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               sessionData: JSON.parse(sessionHistory),
-              candidateName: "Shashank Bhargava" // In real use, fetch from profile
+              candidateName: "Shreyash Srivastava & Prashasti Pathak" // In real use, fetch from profile
             })
           });
           const data = await response.json();
