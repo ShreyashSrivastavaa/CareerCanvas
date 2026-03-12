@@ -10,7 +10,7 @@ import { AuthStatus } from "@/components/auth-status"
 
 
 // Typewriter text animation component
-const TypewriterText = ({ text, delay = 0, speed = 50 }: { 
+const TypewriterText = ({ text, delay = 0, speed = 50 }: {
   text: string;
   delay?: number;
   speed?: number;
@@ -18,28 +18,28 @@ const TypewriterText = ({ text, delay = 0, speed = 50 }: {
   const [displayedText, setDisplayedText] = useState<string>("");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [startTyping, setStartTyping] = useState(false);
-  
+
   useEffect(() => {
     const delayTimer = setTimeout(() => {
       setStartTyping(true);
     }, delay * 1000);
-    
+
     return () => clearTimeout(delayTimer);
   }, [delay]);
-  
+
   useEffect(() => {
     if (!startTyping) return;
-    
+
     if (currentIndex < text.length) {
       const timer = setTimeout(() => {
         setDisplayedText(prev => prev + text[currentIndex]);
         setCurrentIndex(prev => prev + 1);
       }, speed);
-      
+
       return () => clearTimeout(timer);
     }
   }, [currentIndex, text, speed, startTyping]);
-  
+
   return (
     <div>
       {displayedText}
@@ -69,16 +69,16 @@ const AnimatedCursor = () => {
       setClicked(true)
       setTimeout(() => setClicked(false), 500)
     }
-    
+
     window.addEventListener("mousemove", updatePosition)
     window.addEventListener("click", handleClick)
-    
+
     return () => {
       window.removeEventListener("mousemove", updatePosition)
       window.removeEventListener("click", handleClick)
     }
   }, [])
-  
+
   return (
     <motion.div
       className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-50 mix-blend-difference"
@@ -87,9 +87,9 @@ const AnimatedCursor = () => {
         y: position.y - 16,
         scale: clicked ? 1.5 : 1,
       }}
-      transition={{ 
-        type: "spring", 
-        stiffness: 500, 
+      transition={{
+        type: "spring",
+        stiffness: 500,
         damping: 28,
         scale: { duration: 0.15 }
       }}
@@ -115,11 +115,11 @@ const GridBackground = () => {
   return (
     <div className="absolute inset-0 overflow-hidden">
       <div className="absolute inset-0 bg-grid-white/10 bg-[size:50px_50px] [mask-image:radial-gradient(black,transparent_70%)] dark:bg-grid-white/5"></div>
-      
+
       {/* Animated gradient overlay - more responsive */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-pink-500/5"
-        animate={{ 
+        animate={{
           background: [
             "linear-gradient(to bottom right, rgba(168, 85, 247, 0.05), transparent, rgba(236, 72, 153, 0.05))",
             "linear-gradient(to bottom left, rgba(168, 85, 247, 0.05), transparent, rgba(236, 72, 153, 0.05))",
@@ -129,19 +129,19 @@ const GridBackground = () => {
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
-      
+
       {/* Radial pulse effect - more responsive */}
       <div className="absolute inset-0 flex items-center justify-center">
         <motion.div
           className="w-full max-w-[800px] aspect-square rounded-full bg-gradient-to-r from-purple-500/5 to-pink-500/5"
-          animate={{ 
+          animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.1, 0.3]
           }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
-      
+
       <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"></div>
     </div>
   )
@@ -166,8 +166,8 @@ const FloatingElements = () => {
         <motion.div
           key={el.id}
           className={`absolute rounded-full ${el.id % 3 === 0 ? 'bg-primary/20' : el.id % 3 === 1 ? 'bg-purple-500/20' : 'bg-pink-500/20'}`}
-          style={{ 
-            width: `${el.size}px`, 
+          style={{
+            width: `${el.size}px`,
             height: `${el.size}px`,
             left: `${el.x}%`,
             top: `${el.y}%`,
@@ -186,7 +186,7 @@ const FloatingElements = () => {
           }}
         />
       ))}
-      
+
       {/* Smaller, more visible glowing orbs */}
       {[...Array(5)].map((_, i) => (
         <motion.div
@@ -226,14 +226,14 @@ const NetworkEffect = () => {
         </defs>
         <rect x="0" y="0" width="100%" height="100%" fill="url(#network-pattern)" />
       </svg>
-      
+
       {/* Animated connection lines */}
       {[...Array(8)].map((_, i) => {
         const startX = Math.random() * 100;
         const startY = Math.random() * 100;
         const endX = Math.random() * 100;
         const endY = Math.random() * 100;
-        
+
         return (
           <motion.div
             key={`line-${i}`}
@@ -263,12 +263,12 @@ const NetworkEffect = () => {
 }
 
 // Feature card component with animation
-const FeatureCard = ({ 
-  icon, 
-  title, 
-  description, 
-  link, 
-  delay = 0 
+const FeatureCard = ({
+  icon,
+  title,
+  description,
+  link,
+  delay = 0
 }: {
   icon: React.ReactNode;
   title: string;
@@ -349,12 +349,12 @@ export default function Home() {
     <div className="relative flex min-h-screen flex-col bg-background overflow-hidden p-8">
       {/* Enable the animated cursor */}
       <AnimatedCursor />
-      
+
       {/* Background elements */}
       <GridBackground />
       <FloatingElements />
       <NetworkEffect />
-      
+
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
@@ -365,10 +365,12 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <ThemeToggle />
             <AuthStatus />
-            <Button className="relative overflow-hidden group">
-              <span className="relative z-10">Get Started</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            </Button>
+            <Link href="#features">
+              <Button className="relative overflow-hidden group">
+                <span className="relative z-10">Get Started</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </Button>
+            </Link>
           </div>
         </div>
       </header>
@@ -378,7 +380,7 @@ export default function Home() {
         <section className="relative overflow-hidden py-20 md:py-32">
           <div className="container relative z-10">
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-8 items-center">
-              <motion.div 
+              <motion.div
                 className="space-y-6"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -397,25 +399,29 @@ export default function Home() {
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
                   Elevate your interview preparation with our cutting-edge AI tools. Practice with personalized mentorship, system design simulations, and real-time DSA feedback.
                 </p>
-                <motion.div 
+                <motion.div
                   className="flex flex-wrap gap-4"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
                 >
-                  <Button size="lg" className="relative overflow-hidden group">
-                    <span className="relative z-10 flex items-center gap-2">
-                      Start Now <ArrowRight className="h-4 w-4" />
-                    </span>
-                    <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                  </Button>
-                  <Button size="lg" variant="outline">
-                    Learn More
-                  </Button>
+                  <Link href="/dsa-interview/onboarding">
+                    <Button size="lg" className="relative overflow-hidden group">
+                      <span className="relative z-10 flex items-center gap-2">
+                        Start Now <ArrowRight className="h-4 w-4" />
+                      </span>
+                      <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    </Button>
+                  </Link>
+                  <Link href="#features">
+                    <Button size="lg" variant="outline">
+                      Learn More
+                    </Button>
+                  </Link>
                 </motion.div>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 className="relative lg:ml-auto w-full mx-auto lg:mx-0"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -424,9 +430,9 @@ export default function Home() {
                 <div className="relative h-[400px] md:h-[500px] w-full overflow-hidden rounded-xl border border-primary/10 bg-background/50 backdrop-blur-sm">
                   <div className="absolute inset-0 bg-grid-white/5 bg-[size:20px_20px]"></div>
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-pink-500/10"></div>
-                  
+
                   {/* Animated code editor with typing effect */}
-                  <motion.div 
+                  <motion.div
                     className="absolute top-[15%] left-[10%] w-[70%] rounded-lg border border-primary/20 bg-background/80 p-4 backdrop-blur-md shadow-lg"
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -449,9 +455,9 @@ export default function Home() {
 }`} delay={0.5} speed={30} />
                     </pre>
                   </motion.div>
-                  
+
                   {/* AI feedback that appears progressively as code is being typed */}
-                  <motion.div 
+                  <motion.div
                     className="absolute bottom-[15%] right-[10%] w-[75%] rounded-lg border border-primary/20 bg-background/80 p-4 backdrop-blur-md shadow-lg"
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
@@ -464,7 +470,7 @@ export default function Home() {
                       <div className="ml-2 text-xs text-muted-foreground">ai-feedback.md</div>
                     </div>
                     <div className="text-xs text-primary/80">
-                      <TypewriterText 
+                      <TypewriterText
                         text={`✨ AI Feedback: Consider using a more efficient approach.
 
 🔍 Suggestion: Use a single pass with O(n) time complexity.
@@ -477,7 +483,7 @@ export default function Home() {
                       />
                     </div>
                   </motion.div>
-                  
+
                   {/* Floating question suggestions that appear after feedback */}
                   <motion.div
                     className="absolute top-[60%] left-[5%] max-w-[200px] rounded-lg border border-purple-500/30 bg-background/60 p-3 backdrop-blur-md shadow-lg"
@@ -498,9 +504,9 @@ export default function Home() {
         </section>
 
         {/* Feature Cards Section */}
-        <section className="py-12 md:py-24">
+        <section id="features" className="py-12 md:py-24">
           <div className="container">
-            <motion.div 
+            <motion.div
               className="mx-auto text-center md:max-w-[58rem] mb-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -513,7 +519,7 @@ export default function Home() {
                 Our cutting-edge tools combine AI technology with proven interview strategies to help you succeed.
               </p>
             </motion.div>
-            
+
             <div className="grid gap-8 md:grid-cols-4">
               <FeatureCard
                 icon={<MessageSquare className="h-6 w-6" />}
@@ -551,7 +557,7 @@ export default function Home() {
         <section className="relative py-12 md:py-24 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-purple-500/5"></div>
           <div className="container relative z-10">
-            <motion.div 
+            <motion.div
               className="mx-auto text-center md:max-w-[58rem]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -563,16 +569,18 @@ export default function Home() {
               <p className="mt-4 text-muted-foreground md:text-xl/relaxed">
                 Join thousands of engineers who have successfully prepared for technical interviews using our platform.
               </p>
-              <motion.div 
+              <motion.div
                 className="mt-8 flex flex-wrap justify-center gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <Button size="lg" className="relative overflow-hidden group">
-                  <span className="relative z-10">Get Started Now</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                </Button>
+                <Link href="/dsa-interview/onboarding">
+                  <Button size="lg" className="relative overflow-hidden group">
+                    <span className="relative z-10">Get Started Now</span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  </Button>
+                </Link>
               </motion.div>
             </motion.div>
           </div>
