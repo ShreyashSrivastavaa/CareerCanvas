@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "soundFile": "/Users/vikram/Desktop/careercanvas/audios/message_0.wav",
+    "soundFile": "./audios/message_0.wav",
     "duration": 5.10
   },
   "mouthCues": [

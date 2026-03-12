@@ -584,10 +584,10 @@ export default function Home() {
         <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-primary" />
-            <span className="text-lg font-bold">CodeNexus</span>
+            <span className="text-lg font-bold">CareerCanvas</span>
           </div>
           <p className="text-center text-sm text-muted-foreground md:text-left">
-            &copy; {new Date().getFullYear()} CodeNexus. All rights reserved.
+            &copy; {new Date().getFullYear()} CareerCanvas. All rights reserved.
           </p>
           <div className="flex gap-4">
             <Link href="#" className="text-sm text-muted-foreground hover:underline">
