@@ -33,7 +33,6 @@
     "cheerio": "^1.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "components": "^0.1.0",
     "csv-parse": "^5.6.0",
     "framer-motion": "^12.6.3",
     "groq-sdk": "^0.19.0",
